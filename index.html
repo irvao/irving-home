@@ -52,12 +52,12 @@ h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.035em;font-w
 .ilha nav a:hover,.ilha nav a:focus-visible{background:#1A1A1D}
 
 /* herói */
-#inicio{position:relative;height:100svh;min-height:560px;background:var(--breu);overflow:hidden;touch-action:pan-y;cursor:none}
+#inicio{position:relative;height:100svh;min-height:560px;background:#EEEEF0;overflow:hidden;touch-action:pan-y;cursor:none}
 #inicio canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .dica{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:99px;
-  background:rgba(255,255,255,.07);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);color:var(--osso);font-size:14px;font-weight:500;white-space:nowrap;pointer-events:none;
-  border:1px solid rgba(255,255,255,.14)}
-.dica i{width:14px;height:14px;border-radius:50%;border:2px solid var(--osso);flex:none}
+  background:rgba(255,255,255,.55);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);color:#16161A;font-size:14px;font-weight:500;white-space:nowrap;pointer-events:none;
+  border:1px solid rgba(0,0,0,.1);box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.dica i{width:14px;height:14px;border-radius:50%;border:2px solid #16161A;flex:none}
 
 /* botões */
 .botoes{display:flex;flex-wrap:wrap;gap:10px}
@@ -71,7 +71,24 @@ h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.035em;font-w
 .btn svg{width:18px;height:18px}
 
 /* jogo */
-#jogo{background:radial-gradient(70% 60% at 85% 40%,rgba(142,56,240,.2),transparent 70%),var(--ferro);position:relative}
+#jogo{background:var(--ferro);position:relative;padding-block:clamp(40px,6vw,72px)}
+.convite{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;align-items:center;gap:clamp(16px,3vw,28px);padding:clamp(20px,3vw,30px) clamp(20px,3vw,34px);border-radius:32px;
+  background:radial-gradient(90% 140% at 0% 50%,rgba(142,56,240,.22),transparent 60%),#1A1A1F;border:1px solid var(--linha);transition:transform .35s var(--mola),border-color .3s}
+.convite:hover{border-color:#4A3570}
+.convite:active{transform:scale(.985)}
+.convite:focus-visible{outline:3px solid var(--brasa);outline-offset:4px}
+.convite-circ{width:clamp(44px,6vw,60px);height:clamp(44px,6vw,60px);flex:none;color:#B58CF7}
+.convite-circ .traco{stroke-dasharray:107;stroke-dashoffset:107;animation:rabisco 3.2s ease-in-out infinite;transform-origin:center;transform:rotate(-90deg)}
+@keyframes rabisco{0%{stroke-dashoffset:107}45%,70%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+.convite-txt{flex:1;display:flex;flex-direction:column;gap:4px}
+.convite-txt b{font-size:clamp(24px,3.6vw,40px);letter-spacing:-.035em;line-height:1.05;font-weight:700}
+.convite-txt span{color:var(--cinza);font-size:15px}
+.convite-seta{width:28px;height:28px;flex:none;color:var(--cinza);transition:transform .5s var(--mola)}
+.convite[aria-expanded=true] .convite-seta{transform:rotate(180deg)}
+.jogo-corpo{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .7s cubic-bezier(.2,.9,.2,1),opacity .4s}
+.jogo-corpo.aberto{grid-template-rows:1fr;opacity:1}
+.jogo-dentro{overflow:hidden;min-height:0;margin:0 calc(-1*max(5vw,18px));padding:0 max(5vw,18px)}
+.jogo-corpo.aberto .jogo-dentro{padding-top:clamp(40px,6vw,72px);padding-bottom:60px}
 .jogo-grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,6vw,80px);align-items:center}
 .placar{display:flex;flex-direction:column;gap:16px;margin-top:32px}
 .nota{font-size:clamp(72px,11vw,132px);font-weight:700;letter-spacing:-.05em;line-height:.9;font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -101,9 +118,9 @@ h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.035em;font-w
 .passe{padding:clamp(14px,2.4vw,26px);background:#EEEAE3;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
 .imagem{height:clamp(190px,24vw,310px);aspect-ratio:var(--ar);background:#1A1A1D;overflow:hidden}
 .imagem img,.grande{display:block;width:100%;height:100%;object-fit:cover}
-.placa{align-self:flex-start;margin-left:14px;background:#EEEAE3;color:#1A1714;padding:9px 12px;border-radius:2px;font-size:13px;line-height:1.35;max-width:220px;
+.placa{align-self:flex-start;margin-left:14px;background:#EEEAE3;color:#1A1714;padding:9px 12px;border-radius:2px;font-size:13px;line-height:1.4;max-width:250px;font-variant-numeric:tabular-nums;
   box-shadow:0 4px 10px rgba(0,0,0,.5);opacity:calc(.35 + .65*var(--luz))}
-.placa b{display:block;font-size:14px}
+.placa b{display:block;font-size:13.5px;font-weight:650}
 .chao{max-width:1180px;margin:8px auto 0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
 .setas{display:flex;gap:10px}
 .redondo{all:unset;cursor:pointer;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);transition:transform .3s var(--mola),background .2s}
@@ -168,6 +185,7 @@ footer{padding:28px max(5vw,18px);display:flex;flex-wrap:wrap;justify-content:sp
 @media (max-width:820px){.jogo-grade{grid-template-columns:minmax(0,1fr);gap:28px}.jogo-esq{display:contents}.cab{order:0}.tela{order:1}.placar{order:2;margin-top:0}}
 @media (pointer:coarse){#inicio{cursor:auto}}
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important;scroll-behavior:auto!important}}
+@media (prefers-reduced-motion:reduce){.convite-circ .traco{stroke-dashoffset:0}}
 </style>
 </head>
 <body>
@@ -189,7 +207,15 @@ footer{padding:28px max(5vw,18px);display:flex;flex-wrap:wrap;justify-content:sp
 </section>
 
 <section id="jogo" class="faixa" data-nome="o círculo">
-  <div class="miolo jogo-grade">
+  <div class="miolo">
+  <button class="convite" id="abrirJogo" aria-expanded="false" aria-controls="jogoCorpo">
+    <svg class="convite-circ" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="4" fill="currentColor"/><circle class="traco" cx="24" cy="24" r="17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+    <span class="convite-txt"><b>Quer perder um tempo?</b><span>Um joguinho de 10 segundos. Ninguém faz em 10 segundos.</span></span>
+    <svg class="convite-seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  </button>
+  <div class="jogo-corpo" id="jogoCorpo" inert>
+  <div class="jogo-dentro">
+  <div class="jogo-grade">
     <div class="jogo-esq">
       <div class="cab"><h2>Faz um círculo aí, se você é bom mesmo.</h2>
       <p class="intro">Em volta do ponto, de uma vez só, sem tirar o dedo. Parece fácil. Todo mundo acha que é fácil.</p></div>
@@ -207,6 +233,9 @@ footer{padding:28px max(5vw,18px);display:flex;flex-wrap:wrap;justify-content:sp
       <canvas id="circ" aria-label="Área de desenho do círculo" role="img"></canvas>
       <p>Comece onde quiser e dê a volta</p>
     </div>
+  </div>
+  </div>
+  </div>
   </div>
 </section>
 
@@ -297,27 +326,23 @@ if (toque) $('#dicaTxt').textContent = 'Toque na tela pra mover a lente';
 
 function desenhaTextura(fundo){
   tx.setTransform(DPR,0,0,DPR,0,0);
-  tx.fillStyle = '#000'; tx.fillRect(0,0,W,H);
-  if (fundo) {
-    const g = tx.createRadialGradient(W*.5,H*1.05,0,W*.5,H*1.05,Math.max(W,H)*.8);
-    g.addColorStop(0,'rgba(110,40,200,.55)'); g.addColorStop(1,'rgba(110,40,200,0)');
-    tx.fillStyle = g; tx.fillRect(0,0,W,H);
-  }
+  tx.fillStyle = '#EEEEF0'; tx.fillRect(0,0,W,H);
+  const luzFundo = tx.createRadialGradient(W*.5,H*.42,0,W*.5,H*.42,Math.max(W,H)*.75);
+  luzFundo.addColorStop(0,'rgba(255,255,255,.9)'); luzFundo.addColorStop(1,'rgba(255,255,255,0)');
+  tx.fillStyle = luzFundo; tx.fillRect(0,0,W,H);
   const fs = Math.min(W*.27, H*.4);
   tx.textAlign = 'center'; tx.textBaseline = 'alphabetic';
   const base = H*.5 + fs*.22;
-  const cromo = tx.createLinearGradient(0, base - fs*.75, 0, base);
-  cromo.addColorStop(0,'#FFFFFF'); cromo.addColorStop(.55,'#D9D4CC'); cromo.addColorStop(.56,'#9C968F'); cromo.addColorStop(1,'#E9E4DC');
   tx.font = `800 ${fs}px ${FONTE}`;
   if ('letterSpacing' in tx) tx.letterSpacing = `${-fs*.05}px`;
-  tx.fillStyle = cromo; tx.fillText('Irving', W/2, base);
+  tx.fillStyle = '#0E0E11'; tx.fillText('Irving', W/2, base);
   const ps = Math.max(19, fs*.14);
   if ('letterSpacing' in tx) tx.letterSpacing = `${-ps*.02}px`;
   const py = base + ps*2;
   const escreve = (txt, a, dy) => {
     let s = ps; tx.font = `500 ${s}px ${FONTE}`;
     while (tx.measureText(txt).width > W*.9 && s > 12) { s -= 1; tx.font = `500 ${s}px ${FONTE}`; }
-    tx.globalAlpha = a; tx.fillStyle = '#C9C3BA'; tx.fillText(txt, W/2, py + dy); tx.globalAlpha = 1;
+    tx.globalAlpha = a; tx.fillStyle = '#55555C'; tx.fillText(txt, W/2, py + dy); tx.globalAlpha = 1;
   };
   if (profT < 1) {
     const t = profT < .5 ? 2*profT*profT : 1 - Math.pow(-2*profT+2,2)/2;
@@ -334,20 +359,13 @@ float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float ruido(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);
   return mix(mix(hash(i),hash(i+vec2(1.,0.)),u.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.,1.)),u.x),u.y);}
 float fbm(vec2 p){float s=0.,a=.5;for(int i=0;i<4;i++){s+=a*ruido(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return s;}
-vec3 fumaca(vec2 px){
-  vec2 uv=px/res.y*2.4; float tt=tempo*.05;
-  float n=fbm(uv+vec2(tt,-tt*.7)+1.3*fbm(uv*.7+vec2(-tt*.4,tt*.3)));
-  float baixo=smoothstep(.05,1.,px.y/res.y);
-  float f=smoothstep(.42,.95,n);
-  return vec3(.24,.07,.48)*f*(.25+1.1*baixo)+vec3(.72,.45,1.)*pow(f,5.)*baixo*.5;
-}
-vec3 amostra(vec2 px){vec3 tx=texture2D(t,clamp(px/res,0.,1.)).rgb;return tx+fumaca(px)*(1.-tx.g);}
+vec3 amostra(vec2 px){return texture2D(t,clamp(px/res,0.,1.)).rgb;}
 void main(){
   vec2 px=vec2(v.x*res.x,(1.-v.y)*res.y);
   vec2 p=px-c; float d=length(p);
   vec3 fundo=amostra(px);
   float sombra=1.-smoothstep(R*.5,R*1.45,length(p-vec2(R*.12,R*.32)));
-  fundo*=1.-.5*sombra;
+  fundo*=1.-.16*sombra;
   vec3 cor=fundo;
   if(d<R+2.){
     float q=clamp(d/R,0.,1.); float h=sqrt(1.-q*q);
@@ -361,15 +379,16 @@ void main(){
     vec3 L=normalize(vec3(-.55,-.75,.6));
     float brilho=pow(max(dot(reflect(-L,n),vec3(0.,0.,1.)),0.),70.);
     float borda=pow(1.-h,2.4);
-    vid=vid*1.08+.03;
-    vid+=brilho*.9+borda*vec3(.32,.3,.3);
-    vid+=vec3(.32,.12,.6)*pow(1.-h,3.)*max(dot(dir,vec2(.3,1.)),0.)*.6;
+    vid=vid*1.02+.02;
+    vid+=brilho*.9+borda*vec3(.18,.17,.2);
+    vid-=vec3(.05,.12,0.)*pow(1.-h,3.)*max(dot(dir,vec2(.3,1.)),0.);
+    vid-=.1*pow(1.-h,6.);
     float aro=smoothstep(R-2.5,R-.5,d)*(1.-smoothstep(R-.5,R+1.,d));
-    vid=mix(vid,vec3(.95),aro*.45);
+    vid=mix(vid,vec3(.55,.53,.58),aro*.5);
     cor=mix(fundo,vid,1.-smoothstep(R-.5,R+1.,d));
   }
-  vec2 vv=v-.5; cor*=1.-.55*dot(vv*vec2(1.,1.2),vv*vec2(1.,1.2));
-  cor+=(hash(px+fract(tempo)*97.)-.5)*.035;
+  vec2 vv=v-.5; cor*=1.-.18*dot(vv*vec2(1.,1.2),vv*vec2(1.,1.2));
+  cor+=(hash(px+fract(tempo)*97.)-.5)*.02;
   gl_FragColor=vec4(cor,1.);
 }`;
 
@@ -561,40 +580,50 @@ cc.addEventListener('pointerup', solta); cc.addEventListener('pointercancel', so
 $('#denovo').addEventListener('click', () => { pts = []; fim = null; mostraNota(null); $('#frase').textContent = 'Sua vez. Sem pressão.'; $('#denovo').hidden = true; $('#copiarNota').hidden = true; pinta(); });
 $('#copiarNota').addEventListener('click', () => copiar(`Fiz ${br(fim.nota)}% no círculo perfeito. Duvido você fazer melhor: irving.com.br`, 'Copiado. Agora manda pra alguém sofrer.'));
 
+const convite = $('#abrirJogo'), corpo = $('#jogoCorpo');
+function abreJogo(sim, rolar){
+  convite.setAttribute('aria-expanded', String(sim)); corpo.classList.toggle('aberto', sim);
+  if (sim) corpo.removeAttribute('inert'); else corpo.setAttribute('inert', '');
+  if (sim) { setTimeout(medirJogo, 750); if (rolar) setTimeout(() => $('#jogo').scrollIntoView({ behavior: calmo ? 'auto' : 'smooth', block: 'start' }), 120); }
+}
+convite.addEventListener('click', () => abreJogo(convite.getAttribute('aria-expanded') !== 'true', true));
+document.querySelectorAll('a[href="#jogo"]').forEach(a => a.addEventListener('click', () => abreJogo(true, false)));
+if (location.hash === '#jogo') abreJogo(true, false);
+
 /* ---------- galeria ---------- */
 // Fotos: arquivos em fotos/NN.webp (grande) e fotos/NN-p.webp (miniatura). A parede da home mostra as 12 primeiras.
 const FOTOS = [
-  ['01','2048/1365','2026','Gondoleiro passando sob a sombra diagonal de uma ponte de pedra'],
-  ['21','3902/5853','2025','Menino correndo sob o jato d’água de um caminhão-pipa'],
-  ['02','1365/2048','2026','Par de tênis pendurado num fio diante de colunas romanas'],
-  ['03','4000/2667','2025','Homem atravessando a faixa de pedestres vista de cima, em preto e branco'],
-  ['16','5298/3532','2025','Capivara deitada na grama com um passarinho nas costas'],
-  ['04','1944/2916','2025','Coruja-buraqueira de bico aberto olhando de lado'],
-  ['07','2048/1365','2026','Pescador visto de cima na beira de um rochedo sobre o mar escuro'],
-  ['24','5599/3733','2025','Cavaleiro contornando um tambor azul numa pista de areia'],
-  ['06','1365/2048','2026','Arco de igreja escura com um feixe de luz no chão'],
-  ['18','4000/6000','2025','Homem carregando compras por uma rua estreita que termina no mar'],
-  ['11','1365/2048','2026','Cachorro de pelo enrolado e molhado encarando a câmera'],
-  ['15','6000/4000','2025','Mulher de chapéu a cavalo numa pista de areia'],
-  ['05','2048/1365','2026','Surfistas se alongando na areia contra a luz rosada do mar'],
-  ['22','4000/6000','2025','Homem carregando fardos de feno entre cavalos e caminhões'],
-  ['08','2048/1365','2026','Praça de pedra vista do alto com pessoas e sombras compridas'],
-  ['17','4000/6000','2025','Capivara se coçando à beira do lago'],
-  ['09','1365/2048','2026','Torre de tijolos iluminada pelo fim de tarde à beira do rio'],
-  ['20','6000/4000','2025','Cavalos e cavaleiros num picadeiro coberto à luz do fim de tarde'],
-  ['10','5181/3454','2026','Pato dormindo com a cabeça escondida nas penas, em preto e branco'],
-  ['23','4000/6000','2025','Cachorro dormindo de barriga pra cima na terra batida'],
-  ['12','1365/2048','2026','Mulher descansando nas rochas à beira do mar azul'],
-  ['19','3499/5248','2025','Mulher sentada no fim de uma passarela de madeira diante dos prédios'],
-  ['13','3611/2407','2025','Crianças correndo atrás da bola num campo, em preto e branco'],
-  ['26','6000/4000','2026','Gansos à beira de um lago'],
-  ['14','2048/1365','2026','Píer enferrujado cheio de gaivotas sobre a água parada'],
-  ['27','6000/4000','2026','Asa amarela de avião sob uma estrutura de vidro e céu azul'],
-  ['25','6000/4000','2025','Homem sentado à sombra de uma estrutura metálica numa varanda']
+  ['01','2048/1365','2026','Gondoleiro passando sob a sombra diagonal de uma ponte de pedra','EF24-105mm f/4L IS USM','105 mm, f/8, 1/125 s, ISO 100'],
+  ['21','3902/5853','2025','Menino correndo sob o jato d’água de um caminhão-pipa','EF24-105mm f/4L IS USM','105 mm, f/6.3, 1/160 s, ISO 100'],
+  ['02','1365/2048','2026','Par de tênis pendurado num fio diante de colunas romanas','EF24-105mm f/4L IS USM','100 mm, f/8, 1/320 s, ISO 100'],
+  ['03','4000/2667','2025','Homem atravessando a faixa de pedestres vista de cima, em preto e branco','EF100-400mm f/4.5-5.6L IS USM','115 mm, f/8, 1/200 s, ISO 100'],
+  ['16','5298/3532','2025','Capivara deitada na grama com um passarinho nas costas','EF100-400mm f/4.5-5.6L IS USM','400 mm, f/8, 1/320 s, ISO 800'],
+  ['04','1944/2916','2025','Coruja-buraqueira de bico aberto olhando de lado','EF100-400mm f/4.5-5.6L IS USM','400 mm, f/8, 1/200 s, ISO 200'],
+  ['07','2048/1365','2026','Pescador visto de cima na beira de um rochedo sobre o mar escuro','EF24-105mm f/4L IS USM','50 mm, f/8, 1/250 s, ISO 100'],
+  ['24','5599/3733','2025','Cavaleiro contornando um tambor azul numa pista de areia','EF100-400mm f/4.5-5.6L IS USM','100 mm, f/9, 1/250 s, ISO 100'],
+  ['06','1365/2048','2026','Arco de igreja escura com um feixe de luz no chão','EF24-105mm f/4L IS USM','45 mm, f/4, 1/25 s, ISO 800'],
+  ['18','4000/6000','2025','Homem carregando compras por uma rua estreita que termina no mar','RF35mm F1.8 MACRO IS STM','35 mm, f/9, 1/200 s, ISO 100'],
+  ['11','1365/2048','2026','Cachorro de pelo enrolado e molhado encarando a câmera','EF24-105mm f/4L IS USM','105 mm, f/8, 1/160 s, ISO 160'],
+  ['15','6000/4000','2025','Mulher de chapéu a cavalo numa pista de areia','EF100-400mm f/4.5-5.6L IS USM','120 mm, f/8, 1/320 s, ISO 320'],
+  ['05','2048/1365','2026','Surfistas se alongando na areia contra a luz rosada do mar','EF100-400mm f/4.5-5.6L IS USM +1.4x','140 mm, f/14, 1/250 s, ISO 100'],
+  ['22','4000/6000','2025','Homem carregando fardos de feno entre cavalos e caminhões','EF24-105mm f/4L IS USM','65 mm, f/11, 1/125 s, ISO 250'],
+  ['08','2048/1365','2026','Praça de pedra vista do alto com pessoas e sombras compridas','EF24-105mm f/4L IS USM','45 mm, f/8, 1/400 s, ISO 100'],
+  ['17','4000/6000','2025','Capivara se coçando à beira do lago','EF100-400mm f/4.5-5.6L IS USM','330 mm, f/8, 1/160 s, ISO 800'],
+  ['09','1365/2048','2026','Torre de tijolos iluminada pelo fim de tarde à beira do rio','EF24-105mm f/4L IS USM','28 mm, f/8, 1/160 s, ISO 250'],
+  ['20','6000/4000','2025','Cavalos e cavaleiros num picadeiro coberto à luz do fim de tarde','EF24-105mm f/4L IS USM','105 mm, f/4, 1/250 s, ISO 500'],
+  ['10','5181/3454','2026','Pato dormindo com a cabeça escondida nas penas, em preto e branco','EF24-105mm f/4L IS USM','105 mm, f/4, 1/200 s, ISO 100'],
+  ['23','4000/6000','2025','Cachorro dormindo de barriga pra cima na terra batida','EF24-105mm f/4L IS USM','105 mm, f/8, 1/160 s, ISO 100'],
+  ['12','1365/2048','2026','Mulher descansando nas rochas à beira do mar azul','EF24-105mm f/4L IS USM','50 mm, f/8, 1/250 s, ISO 200'],
+  ['19','3499/5248','2025','Mulher sentada no fim de uma passarela de madeira diante dos prédios','RF-S55-210mm F5-7.1 IS STM','55 mm, f/10, 1/250 s, ISO 100'],
+  ['13','3611/2407','2025','Crianças correndo atrás da bola num campo, em preto e branco','RF-S55-210mm F5-7.1 IS STM','162 mm, f/10, 1/250 s, ISO 100'],
+  ['26','6000/4000','2026','Gansos à beira de um lago','EF100-400mm f/4.5-5.6L IS USM','300 mm, f/8, 1/1000 s, ISO 320'],
+  ['14','2048/1365','2026','Píer enferrujado cheio de gaivotas sobre a água parada','EF24-105mm f/4L IS USM','45 mm, f/8, 1/1250 s, ISO 160'],
+  ['27','6000/4000','2026','Asa amarela de avião sob uma estrutura de vidro e céu azul','EF24-105mm f/4L IS USM','58 mm, f/8, 1/320 s, ISO 100'],
+  ['25','6000/4000','2025','Homem sentado à sombra de uma estrutura metálica numa varanda','EF100-400mm f/4.5-5.6L IS USM','235 mm, f/8, 1/250 s, ISO 100']
 ];
-const OBRAS = FOTOS.map(([n, ar, ano, desc], i) => ({ titulo: `Sem título nº ${i + 1}`, ar, ano, tecnica: 'Canon EOS R50', desc, src: `fotos/${n}.webp`, mini: `fotos/${n}-p.webp` }));
-const placaHTML = o => `<b>${o.titulo}</b>Irving, ${o.ano}<br>${o.tecnica}`;
-const obraHTML = (o, i) => `<button class="obra" data-i="${i}" aria-label="Ver ${o.titulo} de perto"><div class="moldura"><div class="passe"><div class="imagem" style="--ar:${o.ar}"><img src="${o.mini}" alt="${o.desc}" loading="lazy" decoding="async"></div></div></div><div class="placa">${placaHTML(o)}</div></button>`;
+const OBRAS = FOTOS.map(([n, ar, ano, desc, lente, ajustes]) => ({ ar, ano, lente, ajustes, desc, src: `fotos/${n}.webp`, mini: `fotos/${n}-p.webp` }));
+const placaHTML = o => `<b>${o.lente}</b>${o.ajustes}<br>Canon EOS R50, ${o.ano}`;
+const obraHTML = (o, i) => `<button class="obra" data-i="${i}" aria-label="Ver foto ${i + 1} de perto"><div class="moldura"><div class="passe"><div class="imagem" style="--ar:${o.ar}"><img src="${o.mini}" alt="${o.desc}" loading="lazy" decoding="async"></div></div></div><div class="placa">${placaHTML(o)}</div></button>`;
 const trilho = $('#trilho');
 trilho.innerHTML = OBRAS.slice(0, 12).map(obraHTML).join('');
 const naParede = [...trilho.querySelectorAll('.obra')];
