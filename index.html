@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Irving</title>
 <meta name="description" content="Irving. Fotos, projetos e um círculo que você não vai conseguir fazer.">
-<meta name="theme-color" content="#08080A">
+<meta name="theme-color" content="#EEEEF0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&display=swap" rel="stylesheet">
@@ -334,11 +334,17 @@ function desenhaTextura(fundo){
   poente.addColorStop(0,'rgba(207,198,221,0)'); poente.addColorStop(.3,'rgba(190,176,214,.5)'); poente.addColorStop(.5,'rgba(110,88,150,.85)');
   poente.addColorStop(.7,'#2E2342'); poente.addColorStop(.88,'#1A1622'); poente.addColorStop(1,'#141417');
   tx.fillStyle = poente; tx.fillRect(0, H*.7, W, H*.3);
-  const fs = Math.min(W*.27, H*.4);
+  const estreito = W < 700;
+  let fs = Math.min(W*.27, H*.4);
   tx.textAlign = 'center'; tx.textBaseline = 'alphabetic';
-  const base = H*.5 + fs*.22;
   tx.font = `800 ${fs}px ${FONTE}`;
   if ('letterSpacing' in tx) tx.letterSpacing = `${-fs*.05}px`;
+  if (estreito) {
+    fs = Math.min(fs*(W*.88)/tx.measureText('Irving').width, H*.3);
+    tx.font = `800 ${fs}px ${FONTE}`;
+    if ('letterSpacing' in tx) tx.letterSpacing = `${-fs*.05}px`;
+  }
+  const base = H*(estreito ? .44 : .5) + fs*.22;
   tx.fillStyle = '#0E0E11'; tx.fillText('Irving', W/2, base);
   const ps = Math.max(19, fs*.14);
   if ('letterSpacing' in tx) tx.letterSpacing = `${-ps*.02}px`;
@@ -376,9 +382,9 @@ void main(){
     vec2 dir=d>.001?p/d:vec2(0.);
     vec2 desl=p*(-.44*h)-p*pow(1.-h,2.)*.32;
     vec3 vid;
-    vid.r=amostra(c+p+desl*.95).r;
+    vid.r=amostra(c+p+desl*.975).r;
     vid.g=amostra(c+p+desl).g;
-    vid.b=amostra(c+p+desl*1.07).b;
+    vid.b=amostra(c+p+desl*1.035).b;
     vec3 n=normalize(vec3(dir*q,h*1.15));
     vec3 L=normalize(vec3(-.55,-.75,.6));
     float brilho=pow(max(dot(reflect(-L,n),vec3(0.,0.,1.)),0.),70.);
@@ -419,7 +425,7 @@ function medir(){
   const r = heroi.getBoundingClientRect();
   W = r.width; H = r.height; DPR = Math.min(window.devicePixelRatio || 1, 2);
   for (const c of [gc, tex]) { c.width = Math.round(W*DPR); c.height = Math.round(H*DPR); }
-  lente.R = Math.max(64, Math.min(Math.min(W, H)*.19, 175));
+  lente.R = Math.max(64, Math.min(Math.min(W, H)*(W < 700 ? .25 : .19), 175));
   if (!lente.x) { lente.x = lente.alvoX = W*.62; lente.y = lente.alvoY = H*.48; }
   sujo = true;
 }
@@ -439,7 +445,7 @@ function quadro(agora){
   if (visivel && W && !document.hidden) {
     if (!calmo && agora - lente.ultimoToque > 3500) {
       const t = agora*.001;
-      lente.alvoX = W*.5 + Math.sin(t*.45)*W*.3; lente.alvoY = H*.47 + Math.sin(t*.7)*H*.1;
+      lente.alvoX = W*.5 + Math.sin(t*.45)*W*.3; lente.alvoY = H*(W < 700 ? .42 : .47) + Math.sin(t*.7)*H*.1;
     }
     const f = dt/16.7;
     if (calmo) { lente.x = lente.alvoX; lente.y = lente.alvoY; }
