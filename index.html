@@ -183,7 +183,7 @@ footer{padding:28px max(5vw,18px);display:flex;flex-wrap:wrap;justify-content:sp
 <main id="site">
 <section id="inicio" data-nome="irving" aria-labelledby="nome">
   <h1 id="nome" class="so-leitor">Irving</h1>
-  <p class="so-leitor">Publicitário, técnico ótico, diretor, fotógrafo, skatista, pintor, marceneiro, chaveiro, mecânico, modelista 3D, programador de araque e cozinheiro.</p>
+  <p class="so-leitor">Publicitário, técnico ótico, diretor, fotógrafo, skatista, pintor, marceneiro, chaveiro, mecânico, operador de CNC, programador, cozinheiro, churrasqueiro, eletricista, horologia, ukulele e colecionador de cabos.</p>
   <canvas id="lente" aria-hidden="true"></canvas>
   <div class="dica" aria-hidden="true"><i></i><span id="dicaTxt">Passe o mouse pra mexer a lente</span></div>
 </section>
@@ -282,9 +282,11 @@ function aviso(t){ const a = $('#aviso'); a.textContent = t; a.classList.add('on
 async function copiar(t, ok){ try { await navigator.clipboard.writeText(t); aviso(ok); } catch(e) { aviso('Não deu pra copiar aqui. Selecione e copie à mão.'); } }
 
 /* ---------- herói: lente de vidro sobre fumaça ---------- */
-const PROF = ['Publicitário','Técnico ótico','Diretor (quando dá)','Fotógrafo amador profissional','Skatista aposentado','Pintor de fim de semana',
-  'Marceneiro com 10 dedos (por enquanto)','Chaveiro de emergência','Mecânico de YouTube','Modelista 3D','Programador de araque','Cozinheiro de domingo',
-  'Churrasqueiro respeitado','Eletricista corajoso','Suporte técnico da família','Colecionador de projetos inacabados','Domador de servidor','Inventor de problemas'];
+const PROF = ['Publicitário, eu acho','Técnico ótico que não usa óculos','Diretor (quando dá)','Fotógrafo amador profissional','Skatista aposentado',
+  'Pintor de fim de semana','Marceneiro com 10 dedos (por enquanto)','Chaveiro de emergência','Mecânico de YouTube','Operador de CNC mais ou menos',
+  'Programador de araque','Cozinheiro de domingo','Churrasqueiro respeitado','Eletricista corajoso','Suporte técnico da família',
+  'Colecionador de projetos inacabados','Domador de servidor','Inventor de problemas','Apreciador de horologia','Admin de grupo de WhatsApp',
+  'Amigo dos animais','Ferreiro de coisas afiadas','Terapeuta freestyle','Tocador de ukulele','Colecionador de cabos que um dia vão servir'];
 const heroi = $('#inicio'), gc = $('#lente');
 const tex = document.createElement('canvas'), tx = tex.getContext('2d');
 const FONTE = 'Geist, "Helvetica Neue", Arial, sans-serif';
