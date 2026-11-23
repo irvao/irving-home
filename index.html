@@ -17,7 +17,7 @@
    LAYOUT: faixas escuras inteiras, ilha dinâmica, galeria como parede de museu. */
 :root{color-scheme:dark;
   --breu:#08080A;--ferro:#141417;--ferro-2:#1C1C21;--linha:#2A2A31;--osso:#ECE7DF;--cinza:#A39E97;
-  --roxo:#8E38F0;--roxo-esc:#2A1048;--brasa:#A86BF5;
+  --roxo:#ECE7DF;--roxo-esc:#2A2A2E;--brasa:#ECE7DF;
   --mola:cubic-bezier(.34,1.45,.5,1);
   --grao:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 *{box-sizing:border-box;min-width:0}
@@ -38,7 +38,7 @@ h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.035em;font-w
 .ilha.aberta{width:min(92vw,360px);height:302px;border-radius:30px}
 .ilha button{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;height:42px;width:100%;padding:0 18px;box-sizing:border-box;font-size:15px;font-weight:500}
 .ilha button:focus-visible{outline:2px solid var(--brasa);outline-offset:-4px;border-radius:24px}
-.ponto{width:9px;height:9px;border-radius:50%;background:#9D4DF5;box-shadow:0 0 12px #9D4DF5;flex:none;animation:pulso 2.4s ease-in-out infinite}
+.ponto{width:9px;height:9px;border-radius:50%;background:#ECE7DF;box-shadow:0 0 10px rgba(255,255,255,.55);flex:none;animation:pulso 2.4s ease-in-out infinite}
 @keyframes pulso{50%{opacity:.45}}
 #ilhaTxt{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:opacity .18s,filter .18s}
 #ilhaTxt.troca{opacity:0;filter:blur(4px)}
@@ -55,9 +55,9 @@ h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.035em;font-w
 #inicio{position:relative;height:100svh;min-height:560px;background:#EEEEF0;overflow:hidden;touch-action:pan-y;cursor:none}
 #inicio canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .dica{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:99px;
-  background:rgba(20,20,23,.45);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);color:var(--osso);font-size:14px;font-weight:500;white-space:nowrap;pointer-events:none;
-  border:1px solid rgba(181,140,247,.28)}
-.dica i{width:14px;height:14px;border-radius:50%;border:2px solid #B58CF7;flex:none}
+  background:rgba(255,255,255,.55);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);color:#16161A;font-size:14px;font-weight:500;white-space:nowrap;pointer-events:none;
+  border:1px solid rgba(0,0,0,.1);box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.dica i{width:14px;height:14px;border-radius:50%;border:2px solid #16161A;flex:none}
 
 /* botões */
 .botoes{display:flex;flex-wrap:wrap;gap:10px}
@@ -73,11 +73,11 @@ h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.035em;font-w
 /* jogo */
 #jogo{background:var(--ferro);position:relative;padding-block:clamp(40px,6vw,72px)}
 .convite{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;align-items:center;gap:clamp(16px,3vw,28px);padding:clamp(20px,3vw,30px) clamp(20px,3vw,34px);border-radius:32px;
-  background:radial-gradient(90% 140% at 0% 50%,rgba(142,56,240,.22),transparent 60%),#1A1A1F;border:1px solid var(--linha);transition:transform .35s var(--mola),border-color .3s}
-.convite:hover{border-color:#4A3570}
+  background:radial-gradient(90% 140% at 0% 50%,rgba(255,255,255,.07),transparent 60%),#1A1A1F;border:1px solid var(--linha);transition:transform .35s var(--mola),border-color .3s}
+.convite:hover{border-color:#4A4A52}
 .convite:active{transform:scale(.985)}
 .convite:focus-visible{outline:3px solid var(--brasa);outline-offset:4px}
-.convite-circ{width:clamp(44px,6vw,60px);height:clamp(44px,6vw,60px);flex:none;color:#B58CF7}
+.convite-circ{width:clamp(44px,6vw,60px);height:clamp(44px,6vw,60px);flex:none;color:#ECE7DF}
 .convite-circ .traco{stroke-dasharray:107;stroke-dashoffset:107;animation:rabisco 3.2s ease-in-out infinite;transform-origin:center;transform:rotate(-90deg)}
 @keyframes rabisco{0%{stroke-dashoffset:107}45%,70%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
 .convite-txt{flex:1;display:flex;flex-direction:column;gap:4px}
@@ -96,8 +96,8 @@ h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.035em;font-w
 .frase{font-size:21px;font-weight:500;min-height:1.6em;color:var(--osso);text-wrap:balance}
 .recorde{color:var(--cinza);font-size:15px}
 .tela{position:relative;aspect-ratio:1;width:100%;max-width:560px;justify-self:center;border-radius:44px;
-  background:radial-gradient(110% 90% at 25% 0%,#2C1546 0%,#151020 45%,#0C0C0E 100%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.05),0 40px 80px -20px rgba(0,0,0,.8),0 0 140px -30px rgba(142,56,240,.45);
+  background:radial-gradient(110% 90% at 25% 0%,#2A2A2F 0%,#161619 45%,#0C0C0E 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.05),0 40px 80px -20px rgba(0,0,0,.8),0 0 140px -40px rgba(255,255,255,.12);
   touch-action:none;cursor:crosshair}
 .tela canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit}
 .tela p{position:absolute;left:0;right:0;bottom:9%;margin:0;text-align:center;color:var(--cinza);font-size:15px;pointer-events:none;transition:opacity .3s}
@@ -168,10 +168,10 @@ h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.035em;font-w
 .proj em{margin-top:auto;font-style:normal;font-size:14px;color:var(--cinza)}
 .proj .icone{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;margin-bottom:8px}
 .proj .icone svg{width:24px;height:24px}
-.proj.lab{background:radial-gradient(120% 100% at 100% 0%,rgba(142,56,240,.32),transparent 60%),#0B0B0D}
+.proj.lab{background:radial-gradient(120% 100% at 100% 0%,rgba(255,255,255,.09),transparent 60%),#0B0B0D}
 
 /* contato */
-#contato{background:radial-gradient(80% 70% at 50% 110%,rgba(142,56,240,.5),transparent 70%),var(--breu);text-align:center;border-top:1px solid #1A1A1E}
+#contato{background:radial-gradient(80% 70% at 50% 110%,rgba(255,255,255,.09),transparent 70%),var(--breu);text-align:center;border-top:1px solid #1A1A1E}
 .email{display:inline-block;font-size:clamp(38px,8.5vw,104px);font-weight:700;letter-spacing:-.05em;line-height:1;text-decoration:none;overflow-wrap:anywhere;margin:22px 0 30px;
   background:linear-gradient(#FFFFFF,#8F8A84);-webkit-background-clip:text;background-clip:text;color:transparent}
 #contato .intro{margin:0 auto}
@@ -330,10 +330,6 @@ function desenhaTextura(fundo){
   const luzFundo = tx.createRadialGradient(W*.5,H*.42,0,W*.5,H*.42,Math.max(W,H)*.75);
   luzFundo.addColorStop(0,'rgba(255,255,255,.9)'); luzFundo.addColorStop(1,'rgba(255,255,255,0)');
   tx.fillStyle = luzFundo; tx.fillRect(0,0,W,H);
-  const poente = tx.createLinearGradient(0, H*.7, 0, H);
-  poente.addColorStop(0,'rgba(207,198,221,0)'); poente.addColorStop(.3,'rgba(190,176,214,.5)'); poente.addColorStop(.5,'rgba(110,88,150,.85)');
-  poente.addColorStop(.7,'#2E2342'); poente.addColorStop(.88,'#1A1622'); poente.addColorStop(1,'#141417');
-  tx.fillStyle = poente; tx.fillRect(0, H*.7, W, H*.3);
   const estreito = W < 700;
   let fs = Math.min(W*.27, H*.4);
   tx.textAlign = 'center'; tx.textBaseline = 'alphabetic';
@@ -352,7 +348,7 @@ function desenhaTextura(fundo){
   const escreve = (txt, a, dy) => {
     let s = ps; tx.font = `500 ${s}px ${FONTE}`;
     while (tx.measureText(txt).width > W*.9 && s > 12) { s -= 1; tx.font = `500 ${s}px ${FONTE}`; }
-    tx.globalAlpha = a; tx.fillStyle = '#5B4E70'; tx.fillText(txt, W/2, py + dy); tx.globalAlpha = 1;
+    tx.globalAlpha = a; tx.fillStyle = '#55555C'; tx.fillText(txt, W/2, py + dy); tx.globalAlpha = 1;
   };
   if (profT < 1) {
     const t = profT < .5 ? 2*profT*profT : 1 - Math.pow(-2*profT+2,2)/2;
@@ -394,8 +390,7 @@ void main(){
     vid-=vec3(.05,.12,0.)*pow(1.-h,3.)*max(dot(dir,vec2(.3,1.)),0.);
     vid-=.1*pow(1.-h,6.);
     float aro=smoothstep(R-2.5,R-.5,d)*(1.-smoothstep(R-.5,R+1.,d));
-    vid+=borda*vec3(.1,.02,.2);
-    vid=mix(vid,vec3(.56,.22,.94),aro*.75);
+    vid=mix(vid,vec3(.12,.12,.14),aro*.7);
     cor=mix(fundo,vid,1.-smoothstep(R-.5,R+1.,d));
   }
   vec2 vv=v-.5; cor*=1.-.18*dot(vv*vec2(1.,1.2),vv*vec2(1.,1.2));
@@ -508,7 +503,7 @@ function avalia(lista){
 }
 function corDaNota(n){
   const t = Math.max(0, Math.min(1, (n - 55)/40));
-  const a = [142,56,240], b = [240,235,226];
+  const a = [110,108,104], b = [240,235,226];
   return `rgb(${a.map((v,i) => Math.round(v + (b[i]-v)*t)).join(',')})`;
 }
 function pinta(){
@@ -519,7 +514,7 @@ function pinta(){
     cx.save(); cx.setLineDash([4,10]); cx.strokeStyle = 'rgba(236,231,223,.3)'; cx.lineWidth = 2;
     cx.beginPath(); cx.arc(m, m, fim.media, 0, Math.PI*2); cx.stroke(); cx.restore();
   }
-  cx.fillStyle = '#ECE7DF'; cx.shadowColor = 'rgba(157,77,245,.95)'; cx.shadowBlur = 20;
+  cx.fillStyle = '#ECE7DF'; cx.shadowColor = 'rgba(255,255,255,.7)'; cx.shadowBlur = 18;
   cx.beginPath(); cx.arc(m, m, 6, 0, Math.PI*2); cx.fill(); cx.shadowBlur = 0;
   if (pts.length > 1) {
     const cor = corDaNota(fim ? fim.nota : (pts.length > 8 ? avalia(pts).nota : 70));
@@ -770,7 +765,7 @@ const FIXOS = [
 const ESCONDE = ['irvao.github.io','irving-home','pedido-armacoes','manutencao','churrascometro','jogo','inventario'];
 function cartao(p){
   const dominio = p.url.replace(/^https?:\/\//,'').replace(/\/$/,'');
-  const cor = p.lab ? 'background:#2C1546;color:#C9A2FA' : 'background:#222228;color:#ECE7DF';
+  const cor = p.lab ? 'background:#2A2A30;color:#ECE7DF' : 'background:#222228;color:#ECE7DF';
   return `<a class="proj${p.lab ? ' lab' : ''}" href="${p.url}"><div class="icone" style="${cor}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONES[p.icone] || ICONES.novo}</svg></div><b>${p.nome}</b><span>${p.txt}</span><em>${dominio}</em></a>`;
 }
 function montaProjetos(extra){
