@@ -153,22 +153,41 @@ h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.035em;font-w
 .caixa-pe{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;max-width:1100px;width:100%;margin:0 auto}
 .caixa-pe .placa{margin:0;opacity:1;max-width:none}
 
-/* projetos */
+/* the vault: estante de acervo */
 #projetos{background:var(--breu)}
-.projetos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;perspective:1000px}
-.proj{position:relative;display:flex;flex-direction:column;gap:10px;min-height:230px;padding:28px;border-radius:30px;text-decoration:none;background:var(--ferro);border:1px solid var(--linha);
-  transform-style:preserve-3d;transition:transform .5s var(--mola),box-shadow .4s,border-color .3s;overflow:hidden}
-.proj::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
-  background:radial-gradient(400px circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.1),transparent 45%)}
-.proj:hover::after{opacity:1}
-.proj:hover{box-shadow:0 30px 60px -30px rgba(0,0,0,.9);border-color:#3A3A42}
-.proj:focus-visible{outline:3px solid var(--brasa);outline-offset:4px}
-.proj b{font-size:28px;letter-spacing:-.03em;line-height:1.1}
-.proj span{color:var(--cinza);font-size:16px}
-.proj em{margin-top:auto;font-style:normal;font-size:14px;color:var(--cinza)}
-.proj .icone{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;margin-bottom:8px}
-.proj .icone svg{width:24px;height:24px}
-.proj.lab{background:radial-gradient(120% 100% at 100% 0%,rgba(255,255,255,.09),transparent 60%),#0B0B0D}
+.acervo{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:end}
+.estante{position:relative}
+.prateleira{display:flex;align-items:flex-end;gap:5px;padding:48px 18px 0;overflow-x:auto;scrollbar-width:none}
+.prateleira::-webkit-scrollbar{display:none}
+.tabua{height:16px;border-radius:2px;background:linear-gradient(#3A3A42,#1C1C21 70%);box-shadow:0 26px 40px -14px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.12)}
+.livro{all:unset;box-sizing:border-box;flex:none;cursor:pointer;position:relative;width:var(--w);height:var(--h);border-radius:3px 3px 1px 1px;color:var(--t);
+  background:linear-gradient(90deg,rgba(0,0,0,.28),transparent 16%,transparent 82%,rgba(0,0,0,.34)),var(--c);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 -2px 12px -6px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;
+  transition:transform .45s var(--mola),box-shadow .3s}
+.livro::before,.livro::after{content:"";position:absolute;left:5px;right:5px;height:3px;border-block:1px solid currentColor;opacity:.3}
+.livro::before{top:14px}.livro::after{bottom:14px}
+.livro span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:15px;font-weight:650;letter-spacing:-.01em;white-space:nowrap;max-height:calc(100% - 44px);overflow:hidden;text-overflow:ellipsis}
+.livro:hover{transform:translateY(-8px)}
+.livro[aria-expanded=true]{transform:translateY(-26px) rotate(-2deg);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 18px 26px -10px rgba(0,0,0,.9)}
+.livro:focus-visible{outline:3px solid var(--brasa);outline-offset:3px}
+.encostado{flex:none;width:40px;height:196px;margin-left:44px;border-radius:3px 3px 1px 1px;transform:rotate(-13deg);transform-origin:bottom right;
+  background:linear-gradient(90deg,rgba(0,0,0,.3),transparent 18%,transparent 80%,rgba(0,0,0,.35)),#141417;border:1px solid #2A2A31;color:#6B6B72;display:flex;align-items:center;justify-content:center}
+.encostado span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:13px;font-weight:500;white-space:nowrap}
+.ficha{position:relative;background:repeating-linear-gradient(transparent 0 27px,rgba(26,23,20,.09) 27px 28px),#EEEAE3;color:#1A1714;border-radius:4px;padding:22px 24px 22px 40px;
+  box-shadow:0 30px 50px -24px rgba(0,0,0,.9);transform:rotate(-.6deg);animation:ficha .45s var(--mola)}
+.ficha::before{content:"";position:absolute;top:0;bottom:0;left:26px;width:1px;background:rgba(26,23,20,.22)}
+@keyframes ficha{from{transform:translateY(14px) rotate(-.6deg);opacity:0}}
+.ficha-cab{display:flex;justify-content:space-between;font-size:13px;color:#6B655E;margin-bottom:10px}
+.ficha b{display:block;font-size:30px;letter-spacing:-.03em;line-height:1.1;margin-bottom:6px}
+.ficha p{margin:0 0 6px;font-size:16px;line-height:1.55}
+.ficha small{display:block;font-size:14px;color:#6B655E;margin-bottom:18px}
+.ficha-pe{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
+.carimbo{border:2px solid rgba(26,23,20,.5);color:rgba(26,23,20,.62);border-radius:4px;padding:3px 10px;font-size:13px;font-weight:700;transform:rotate(-5deg)}
+.ficha .btn{background:#16161A;color:#ECE7DF;text-decoration:none}
+.ficha .btn:hover{background:#000}
+@media (min-width:1100px){.livro{width:calc(var(--w)*1.15);height:calc(var(--h)*1.15)}.encostado{height:225px;width:46px;margin-left:52px}}
+@media (max-width:820px){.acervo{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.prateleira{gap:4px;padding-inline:10px}.livro{width:calc(var(--w)*.82);height:calc(var(--h)*.86)}.livro span{font-size:14px}.encostado{width:34px;height:168px;margin-left:36px}}
 
 /* contato */
 #contato{background:radial-gradient(80% 70% at 50% 110%,rgba(255,255,255,.09),transparent 70%),var(--breu);text-align:center;border-top:1px solid #1A1A1E}
@@ -194,7 +213,7 @@ footer{padding:28px max(5vw,18px);display:flex;flex-wrap:wrap;justify-content:sp
   <button id="ilhaBtn" aria-expanded="false" aria-controls="ilhaMenu"><span class="ponto" aria-hidden="true"></span><span id="ilhaTxt">irving</span>
     <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
   <nav id="ilhaMenu" aria-label="Seções">
-    <a href="#inicio">Início</a><a href="#jogo">O círculo</a><a href="#galeria">Galeria</a><a href="#projetos">Projetos</a><a href="#contato">Contato</a>
+    <a href="#inicio">Início</a><a href="#jogo">O círculo</a><a href="#galeria">Galeria</a><a href="#projetos">The Vault</a><a href="#contato">Contato</a>
   </nav>
 </header>
 
@@ -255,10 +274,16 @@ footer{padding:28px max(5vw,18px);display:flex;flex-wrap:wrap;justify-content:sp
   </div>
 </section>
 
-<section id="projetos" class="faixa" data-nome="projetos">
+<section id="projetos" class="faixa" data-nome="the vault">
   <div class="miolo">
-    <div class="topo"><div><h2>Coisas que eu construo</h2><p class="intro">Repositórios e ferramentas. Quando sai um novo, ele aparece aqui sozinho.</p></div></div>
-    <div class="projetos" id="projs"></div>
+    <div class="topo"><div><h2>The Vault</h2><p class="intro">Repositórios e ferramentas.</p></div></div>
+    <div class="acervo">
+      <div class="estante">
+        <div class="prateleira" id="livros" aria-label="Estante de projetos"></div>
+        <div class="tabua" aria-hidden="true"></div>
+      </div>
+      <div id="ficha" aria-live="polite"></div>
+    </div>
   </div>
 </section>
 
@@ -750,43 +775,37 @@ $('#abrirExpo').addEventListener('click', () => { location.hash = 'exposicao'; }
 window.addEventListener('hashchange', rota);
 rota();
 
-/* ---------- projetos ---------- */
-const ICONES = {
-  jogo: '<path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><rect x="2" y="6" width="20" height="12" rx="6"/>',
-  inventario: '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/>',
-  lab: '<path d="m4 17 6-6-6-6M12 19h8"/>',
-  novo: '<path d="M12 5v14M5 12h14"/>'
-};
+/* ---------- the vault: estante ---------- */
+const TONS = [['#ECE7DF','#16161A'],['#2A2A30','#ECE7DF'],['#1C1C21','#ECE7DF'],['#A39E97','#16161A'],['#3A3A42','#ECE7DF'],['#D6D0C6','#16161A']];
 const FIXOS = [
-  { nome: 'Jogo', txt: 'Um RPG da vida real que começou como ficha de personagem.', url: 'https://irvao.com.br/jogo/', icone: 'jogo' },
-  { nome: 'Inventário', txt: 'Onde está cada coisa guardada nas caixas de casa.', url: 'https://irvao.com.br/inventario/', icone: 'inventario' },
-  { nome: 'Laboratório', txt: 'Terminal das antigas com ferramentas, atalhos e comandos inúteis.', url: 'https://irvao.com.br/', icone: 'lab', lab: true }
+  { nome: 'Jogo', txt: 'Um RPG da vida real que começou como ficha de personagem.', url: 'https://irvao.com.br/jogo/', tom: 0, h: 212, w: 50 },
+  { nome: 'Inventário', txt: 'Onde está cada coisa guardada nas caixas de casa.', url: 'https://irvao.com.br/inventario/', tom: 2, h: 232, w: 58 },
+  { nome: 'Laboratório', txt: 'Terminal das antigas com ferramentas, atalhos e comandos inúteis.', url: 'https://irvao.com.br/', tom: 3, h: 196, w: 46 }
 ];
 const ESCONDE = ['irvao.github.io','irving-home','pedido-armacoes','manutencao','churrascometro','jogo','inventario'];
-function cartao(p){
-  const dominio = p.url.replace(/^https?:\/\//,'').replace(/\/$/,'');
-  const cor = p.lab ? 'background:#2A2A30;color:#ECE7DF' : 'background:#222228;color:#ECE7DF';
-  return `<a class="proj${p.lab ? ' lab' : ''}" href="${p.url}"><div class="icone" style="${cor}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONES[p.icone] || ICONES.novo}</svg></div><b>${p.nome}</b><span>${p.txt}</span><em>${dominio}</em></a>`;
+const sorteio = s => [...s].reduce((a, ch) => (a*31 + ch.charCodeAt(0)) >>> 0, 7);
+let LIVROS = [], escolhido = 0;
+function ficha(i){
+  escolhido = i;
+  const p = LIVROS[i], dominio = p.url.replace(/^https?:\/\//,'').replace(/\/$/,'');
+  document.querySelectorAll('.livro').forEach((l, j) => l.setAttribute('aria-expanded', String(j === i)));
+  $('#ficha').innerHTML = `<div class="ficha"><div class="ficha-cab"><span>Ficha do acervo</span><span>Nº ${String(i + 1).padStart(3, '0')}</span></div><b>${p.nome}</b><p>${p.txt}</p><small>${dominio}</small><div class="ficha-pe"><span class="carimbo">Devolver até: nunca</span><a class="btn" href="${p.url}">Abrir</a></div></div>`;
 }
-function montaProjetos(extra){
-  $('#projs').innerHTML = [...FIXOS, ...extra].map(cartao).join('');
-  if (!toque && !calmo) $('#projs').querySelectorAll('.proj').forEach(c => {
-    c.addEventListener('pointermove', e => {
-      const r = c.getBoundingClientRect(), x = (e.clientX - r.left)/r.width, y = (e.clientY - r.top)/r.height;
-      c.style.transform = `rotateX(${(.5 - y)*10}deg) rotateY(${(x - .5)*12}deg) translateZ(10px)`;
-      c.style.setProperty('--gx', `${x*100}%`); c.style.setProperty('--gy', `${y*100}%`);
-    });
-    c.addEventListener('pointerleave', () => { c.style.transform = ''; });
-  });
+function montaEstante(extra){
+  LIVROS = [...FIXOS, ...extra.map(p => { const n = sorteio(p.nome); return { ...p, tom: n % TONS.length, h: 180 + n % 56, w: Math.max(42, Math.min(60, 30 + p.nome.length*2)) }; })];
+  $('#livros').innerHTML = LIVROS.map((p, i) => `<button class="livro" aria-controls="ficha" aria-expanded="false" aria-label="${p.nome}" style="--h:${p.h}px;--w:${p.w}px;--c:${TONS[p.tom][0]};--t:${TONS[p.tom][1]}"><span>${p.nome}</span></button>`).join('')
+    + '<div class="encostado" aria-hidden="true"><span>Manual que eu não li</span></div>';
+  $('#livros').querySelectorAll('.livro').forEach((l, i) => l.addEventListener('click', () => ficha(i)));
+  ficha(Math.min(escolhido, LIVROS.length - 1));
 }
-montaProjetos([]);
+montaEstante([]);
 const esc = s => String(s).replace(/[&<>"']/g, ch => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[ch]));
 fetch('https://api.github.com/users/irvao/repos?sort=pushed&per_page=50')
   .then(r => r.ok ? r.json() : [])
   .then(lista => {
     const novos = (Array.isArray(lista) ? lista : []).filter(r => !r.fork && !r.private && !ESCONDE.includes(r.name.toLowerCase()))
-      .map(r => ({ nome: esc(r.name), txt: esc(r.description || 'Projeto novo, ainda sem descrição.'), url: esc(r.homepage || `https://irvao.com.br/${r.name}/`), icone: 'novo' }));
-    if (novos.length) montaProjetos(novos);
+      .map(r => ({ nome: esc(r.name), txt: esc(r.description || 'Projeto novo, ainda sem descrição.'), url: esc(r.homepage || `https://irvao.com.br/${r.name}/`) }));
+    if (novos.length) montaEstante(novos);
   }).catch(() => {});
 
 /* ---------- contato ---------- */
