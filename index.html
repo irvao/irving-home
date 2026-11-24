@@ -153,41 +153,30 @@ h2{font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.035em;font-w
 .caixa-pe{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;max-width:1100px;width:100%;margin:0 auto}
 .caixa-pe .placa{margin:0;opacity:1;max-width:none}
 
-/* the vault: estante de acervo */
-#projetos{background:var(--breu)}
-.acervo{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:end}
-.estante{position:relative}
-.prateleira{display:flex;align-items:flex-end;gap:5px;padding:48px 18px 0;overflow-x:auto;scrollbar-width:none}
-.prateleira::-webkit-scrollbar{display:none}
-.tabua{height:16px;border-radius:2px;background:linear-gradient(#3A3A42,#1C1C21 70%);box-shadow:0 26px 40px -14px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.12)}
-.livro{all:unset;box-sizing:border-box;flex:none;cursor:pointer;position:relative;width:var(--w);height:var(--h);border-radius:3px 3px 1px 1px;color:var(--t);
-  background:linear-gradient(90deg,rgba(0,0,0,.28),transparent 16%,transparent 82%,rgba(0,0,0,.34)),var(--c);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 -2px 12px -6px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;
-  transition:transform .45s var(--mola),box-shadow .3s}
-.livro::before,.livro::after{content:"";position:absolute;left:5px;right:5px;height:3px;border-block:1px solid currentColor;opacity:.3}
-.livro::before{top:14px}.livro::after{bottom:14px}
-.livro span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:15px;font-weight:650;letter-spacing:-.01em;white-space:nowrap;max-height:calc(100% - 44px);overflow:hidden;text-overflow:ellipsis}
-.livro:hover{transform:translateY(-8px)}
-.livro[aria-expanded=true]{transform:translateY(-26px) rotate(-2deg);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 18px 26px -10px rgba(0,0,0,.9)}
-.livro:focus-visible{outline:3px solid var(--brasa);outline-offset:3px}
-.encostado{flex:none;width:40px;height:196px;margin-left:44px;border-radius:3px 3px 1px 1px;transform:rotate(-13deg);transform-origin:bottom right;
-  background:linear-gradient(90deg,rgba(0,0,0,.3),transparent 18%,transparent 80%,rgba(0,0,0,.35)),#141417;border:1px solid #2A2A31;color:#6B6B72;display:flex;align-items:center;justify-content:center}
-.encostado span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:13px;font-weight:500;white-space:nowrap}
-.ficha{position:relative;background:repeating-linear-gradient(transparent 0 27px,rgba(26,23,20,.09) 27px 28px),#EEEAE3;color:#1A1714;border-radius:4px;padding:22px 24px 22px 40px;
-  box-shadow:0 30px 50px -24px rgba(0,0,0,.9);transform:rotate(-.6deg);animation:ficha .45s var(--mola)}
-.ficha::before{content:"";position:absolute;top:0;bottom:0;left:26px;width:1px;background:rgba(26,23,20,.22)}
-@keyframes ficha{from{transform:translateY(14px) rotate(-.6deg);opacity:0}}
-.ficha-cab{display:flex;justify-content:space-between;font-size:13px;color:#6B655E;margin-bottom:10px}
-.ficha b{display:block;font-size:30px;letter-spacing:-.03em;line-height:1.1;margin-bottom:6px}
-.ficha p{margin:0 0 6px;font-size:16px;line-height:1.55}
-.ficha small{display:block;font-size:14px;color:#6B655E;margin-bottom:18px}
-.ficha-pe{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
-.carimbo{border:2px solid rgba(26,23,20,.5);color:rgba(26,23,20,.62);border-radius:4px;padding:3px 10px;font-size:13px;font-weight:700;transform:rotate(-5deg)}
-.ficha .btn{background:#16161A;color:#ECE7DF;text-decoration:none}
-.ficha .btn:hover{background:#000}
-@media (min-width:1100px){.livro{width:calc(var(--w)*1.15);height:calc(var(--h)*1.15)}.encostado{height:225px;width:46px;margin-left:52px}}
-@media (max-width:820px){.acervo{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:520px){.prateleira{gap:4px;padding-inline:10px}.livro{width:calc(var(--w)*.82);height:calc(var(--h)*.86)}.livro span{font-size:14px}.encostado{width:34px;height:168px;margin-left:36px}}
+/* the vault: computadorzinho */
+#projetos{background:radial-gradient(50% 60% at 30% 62%,rgba(255,244,228,.06),transparent 70%),var(--breu)}
+.vault{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.vault-mesa{position:relative;height:clamp(320px,34vw,460px);touch-action:pan-y}
+.vault-mesa canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.plano-b{position:absolute;inset:8% 14%;border-radius:22px;background:#E4DDCF;padding:7% 8% 16%;box-shadow:0 40px 60px -30px rgba(0,0,0,.9)}
+.plano-b img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;border-radius:8px;background:#0B0B0D}
+.vault-info{display:flex;flex-direction:column;align-items:flex-start}
+.vault-conta{font-size:15px;color:var(--cinza);font-variant-numeric:tabular-nums;margin-bottom:14px}
+.vault-conta b{color:var(--osso);font-weight:500}
+.mascara{display:block;overflow:hidden;padding-bottom:.08em;max-width:100%}
+.mascara>span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.peca-nome{font-size:clamp(44px,5.6vw,84px);font-weight:300;letter-spacing:-.045em;line-height:1;margin:0}
+.traco{display:block;width:72px;height:1px;background:var(--osso);margin:24px 0 20px;transform-origin:left}
+.vault-info p{margin:0 0 8px;font-size:clamp(17px,1.4vw,19px);line-height:1.5;max-width:24em;min-height:3em}
+.vault-info small{font-size:14px;color:var(--cinza);margin-bottom:26px}
+.vault-acoes{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.vault-acoes .btn{text-decoration:none}
+.vault-lista{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.vault-lista button{all:unset;cursor:pointer;font-size:14px;padding:7px 13px;border-radius:99px;color:var(--cinza);border:1px solid var(--linha);transition:color .2s,border-color .2s,background .2s}
+.vault-lista button:hover{color:var(--osso);border-color:#4A4A52}
+.vault-lista button[aria-current=true]{color:var(--breu);background:var(--osso);border-color:var(--osso)}
+.vault-lista button:focus-visible{outline:2px solid var(--brasa);outline-offset:2px}
+@media (max-width:820px){.vault{grid-template-columns:minmax(0,1fr);gap:8px}.vault-mesa{height:clamp(280px,78vw,380px)}.vault-info p{min-height:0}}
 
 /* contato */
 #contato{background:radial-gradient(80% 70% at 50% 110%,rgba(255,255,255,.09),transparent 70%),var(--breu);text-align:center;border-top:1px solid #1A1A1E}
@@ -277,12 +266,23 @@ footer{padding:28px max(5vw,18px);display:flex;flex-wrap:wrap;justify-content:sp
 <section id="projetos" class="faixa" data-nome="the vault">
   <div class="miolo">
     <div class="topo"><div><h2>The Vault</h2><p class="intro">Repositórios e ferramentas.</p></div></div>
-    <div class="acervo">
-      <div class="estante">
-        <div class="prateleira" id="livros" aria-label="Estante de projetos"></div>
-        <div class="tabua" aria-hidden="true"></div>
+    <div class="vault" id="vault" aria-roledescription="carrossel" aria-label="Projetos">
+      <div class="vault-mesa" id="vMesa"><canvas id="vCanvas" aria-hidden="true"></canvas></div>
+      <div class="vault-info" aria-live="polite">
+        <div class="vault-conta"><b id="vNum">01</b> / <span id="vTot">03</span></div>
+        <h3 class="peca-nome mascara"><span id="vNome">Jogo</span></h3>
+        <i class="traco" id="vTraco"></i>
+        <p id="vTxt"></p>
+        <small id="vDom"></small>
+        <div class="vault-acoes">
+          <a class="btn" id="vAbrir" href="#">Abrir</a>
+          <div class="setas">
+            <button class="redondo" id="vAnt" aria-label="Projeto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+            <button class="redondo" id="vProx" aria-label="Próximo projeto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+        </div>
+        <div class="vault-lista" id="vLista" aria-label="Todos os projetos"></div>
       </div>
-      <div id="ficha" aria-live="polite"></div>
     </div>
   </div>
 </section>
@@ -459,7 +459,7 @@ heroi.addEventListener('pointerdown', e => { mira(e); if (!calmo) lente.vk += .0
 
 let antes = performance.now();
 function quadro(agora){
-  const dt = Math.min(agora - antes, 50); antes = agora;
+  const dt = Math.max(0, Math.min(agora - antes, 50)); antes = agora;
   if (agora - ultimaTroca > 2600) { profAnt = profI; profI = (profI + 1) % PROF.length; profT = calmo ? 1 : 0; ultimaTroca = agora; sujo = true; }
   if (profT < 1) { profT = Math.min(1, profT + dt/650); sujo = true; }
   if (visivel && W && !document.hidden) {
@@ -775,42 +775,233 @@ $('#abrirExpo').addEventListener('click', () => { location.hash = 'exposicao'; }
 window.addEventListener('hashchange', rota);
 rota();
 
-/* ---------- the vault: estante ---------- */
-const TONS = [['#ECE7DF','#16161A'],['#2A2A30','#ECE7DF'],['#1C1C21','#ECE7DF'],['#A39E97','#16161A'],['#3A3A42','#ECE7DF'],['#D6D0C6','#16161A']];
+/* ---------- the vault: computadorzinho ---------- */
 const FIXOS = [
-  { nome: 'Jogo', txt: 'Um RPG da vida real que começou como ficha de personagem.', url: 'https://irvao.com.br/jogo/', tom: 0, h: 212, w: 50 },
-  { nome: 'Inventário', txt: 'Onde está cada coisa guardada nas caixas de casa.', url: 'https://irvao.com.br/inventario/', tom: 2, h: 232, w: 58 },
-  { nome: 'Laboratório', txt: 'Terminal das antigas com ferramentas, atalhos e comandos inúteis.', url: 'https://irvao.com.br/', tom: 3, h: 196, w: 46 }
+  { nome: 'Jogo', txt: 'Um RPG da vida real que começou como ficha de personagem.', url: 'https://irvao.com.br/jogo/', img: 'vault/jogo.webp' },
+  { nome: 'Inventário', txt: 'Onde está cada coisa guardada nas caixas de casa.', url: 'https://irvao.com.br/inventario/', img: 'vault/inventario.webp' },
+  { nome: 'Laboratório', txt: 'Terminal das antigas com ferramentas, atalhos e comandos inúteis.', url: 'https://irvao.com.br/', img: 'vault/lab.webp' }
 ];
 const ESCONDE = ['irvao.github.io','irving-home','pedido-armacoes','manutencao','churrascometro','jogo','inventario'];
-const sorteio = s => [...s].reduce((a, ch) => (a*31 + ch.charCodeAt(0)) >>> 0, 7);
-let LIVROS = [], escolhido = 0;
-function ficha(i){
-  escolhido = i;
-  const p = LIVROS[i], dominio = p.url.replace(/^https?:\/\//,'').replace(/\/$/,'');
-  document.querySelectorAll('.livro').forEach((l, j) => l.setAttribute('aria-expanded', String(j === i)));
-  $('#ficha').innerHTML = `<div class="ficha"><div class="ficha-cab"><span>Ficha do acervo</span><span>Nº ${String(i + 1).padStart(3, '0')}</span></div><b>${p.nome}</b><p>${p.txt}</p><small>${dominio}</small><div class="ficha-pe"><span class="carimbo">Devolver até: nunca</span><a class="btn" href="${p.url}">Abrir</a></div></div>`;
-}
-function montaEstante(extra){
-  LIVROS = [...FIXOS, ...extra.map(p => { const n = sorteio(p.nome); return { ...p, tom: n % TONS.length, h: 180 + n % 56, w: Math.max(42, Math.min(60, 30 + p.nome.length*2)) }; })];
-  $('#livros').innerHTML = LIVROS.map((p, i) => `<button class="livro" aria-controls="ficha" aria-expanded="false" aria-label="${p.nome}" style="--h:${p.h}px;--w:${p.w}px;--c:${TONS[p.tom][0]};--t:${TONS[p.tom][1]}"><span>${p.nome}</span></button>`).join('')
-    + '<div class="encostado" aria-hidden="true"><span>Manual que eu não li</span></div>';
-  $('#livros').querySelectorAll('.livro').forEach((l, i) => l.addEventListener('click', () => ficha(i)));
-  ficha(Math.min(escolhido, LIVROS.length - 1));
-}
-montaEstante([]);
 const esc = s => String(s).replace(/[&<>"']/g, ch => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[ch]));
+const dois = n => String(n).padStart(2, '0');
+window.VAULT = { lista: [], i: 0 };
+function vaultMostra(i, dir){
+  const V = window.VAULT, n = V.lista.length;
+  V.i = (i + n) % n;
+  const p = V.lista[V.i], dominio = p.url.replace(/^https?:\/\//,'').replace(/\/$/,'');
+  const troca = () => {
+    $('#vNum').textContent = dois(V.i + 1); $('#vNome').textContent = p.nome; $('#vTxt').textContent = p.txt; $('#vDom').textContent = dominio;
+    $('#vAbrir').href = p.url; $('#vAbrir').setAttribute('aria-label', `Abrir ${p.nome}`);
+  };
+  $('#vLista').querySelectorAll('button').forEach((b, j) => b.setAttribute('aria-current', String(j === V.i)));
+  if (dir && !calmo && $('#vNome').animate) {
+    const sai = { duration: 260, easing: 'cubic-bezier(.7,0,.84,0)', fill: 'forwards' };
+    $('#vNome').animate([{ transform: 'none' }, { transform: `translateY(-110%)` }], sai);
+    for (const el of ['#vTxt', '#vDom', '#vTraco']) $(el).animate([{ opacity: 1 }, { opacity: 0 }], sai);
+    setTimeout(() => {
+      troca();
+      const vem = { duration: 900, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'forwards' };
+      $('#vNome').animate([{ transform: 'translateY(110%)' }, { transform: 'none' }], vem);
+      $('#vTraco').animate([{ opacity: 1, transform: 'scaleX(0)' }, { opacity: 1, transform: 'scaleX(1)' }], { ...vem, delay: 150 });
+      $('#vTxt').animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { ...vem, delay: 220 });
+      $('#vDom').animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { ...vem, delay: 300 });
+    }, 270);
+  } else troca();
+  dispatchEvent(new CustomEvent('vault:troca', { detail: { i: V.i, dir: dir || 0 } }));
+}
+function montaVault(extra){
+  window.VAULT.lista = [...FIXOS, ...extra];
+  $('#vTot').textContent = dois(window.VAULT.lista.length);
+  $('#vLista').innerHTML = window.VAULT.lista.map(p => `<button>${esc(p.nome)}</button>`).join('');
+  $('#vLista').querySelectorAll('button').forEach((b, j) => b.addEventListener('click', () => { if (j !== window.VAULT.i) vaultMostra(j, j > window.VAULT.i ? 1 : -1); }));
+  vaultMostra(Math.min(window.VAULT.i, window.VAULT.lista.length - 1), 0);
+  dispatchEvent(new CustomEvent('vault:lista'));
+}
+$('#vAnt').addEventListener('click', () => vaultMostra(window.VAULT.i - 1, -1));
+$('#vProx').addEventListener('click', () => vaultMostra(window.VAULT.i + 1, 1));
+$('#vault').addEventListener('keydown', e => {
+  if (e.target.closest('a, .vault-lista')) return;
+  if (e.key === 'ArrowRight') { e.preventDefault(); vaultMostra(window.VAULT.i + 1, 1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); vaultMostra(window.VAULT.i - 1, -1); }
+});
+{ let x0 = null;
+  $('#vMesa').addEventListener('pointerdown', e => { x0 = e.clientX; });
+  $('#vMesa').addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) vaultMostra(window.VAULT.i + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1); });
+}
+montaVault([]);
 fetch('https://api.github.com/users/irvao/repos?sort=pushed&per_page=50')
   .then(r => r.ok ? r.json() : [])
   .then(lista => {
     const novos = (Array.isArray(lista) ? lista : []).filter(r => !r.fork && !r.private && !ESCONDE.includes(r.name.toLowerCase()))
-      .map(r => ({ nome: esc(r.name), txt: esc(r.description || 'Projeto novo, ainda sem descrição.'), url: esc(r.homepage || `https://irvao.com.br/${r.name}/`) }));
-    if (novos.length) montaEstante(novos);
+      .map(r => ({ nome: r.name, txt: r.description || 'Projeto novo, ainda sem descrição.', url: /^https?:\/\//.test(r.homepage || '') ? r.homepage : `https://irvao.com.br/${encodeURIComponent(r.name)}/` }));
+    if (novos.length) montaVault(novos);
   }).catch(() => {});
 
 /* ---------- contato ---------- */
 $('#copiarEmail').addEventListener('click', () => copiar('o@irving.com.br', 'Copiado. Depois não diz que eu não avisei.'));
 }
+</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<script type="module">
+/* ---------- the vault: computador 3D (three.js, carregado só quando a seção aparece) ---------- */
+const mesa = document.getElementById('vMesa'), tela = document.getElementById('vCanvas');
+const calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function planoB(){
+  tela.remove();
+  const d = document.createElement('div'); d.className = 'plano-b'; d.innerHTML = '<img alt="">'; mesa.append(d);
+  const poe = () => { const p = window.VAULT.lista[window.VAULT.i]; const im = d.querySelector('img'); if (p.img) { im.src = p.img; im.alt = `Tela do projeto ${p.nome}`; } else { im.removeAttribute('src'); im.alt = ''; } };
+  addEventListener('vault:troca', poe); poe();
+}
+async function liga(){
+  let THREE, RoundedBoxGeometry, RoomEnvironment;
+  try {
+    THREE = await import('three');
+    ({ RoundedBoxGeometry } = await import('three/addons/geometries/RoundedBoxGeometry.js'));
+    ({ RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js'));
+  } catch (e) { return planoB(); }
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas: tela, antialias: true, alpha: true }); } catch (e) { return planoB(); }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = .92;
+  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.VSMShadowMap;
+  const cena = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  cena.environment = pmrem.fromScene(new RoomEnvironment(), .04).texture; cena.environmentIntensity = .55;
+  const cam = new THREE.PerspectiveCamera(26, 1, .1, 100);
+
+  const plastico = new THREE.MeshPhysicalMaterial({ color: 0xDDD5C6, roughness: .5, clearcoat: .35, clearcoatRoughness: .45 });
+  const plasticoEsc = new THREE.MeshPhysicalMaterial({ color: 0xC9C0AF, roughness: .6, clearcoat: .2, clearcoatRoughness: .5 });
+  const tecla = new THREE.MeshPhysicalMaterial({ color: 0xEFE9DE, roughness: .45, clearcoat: .4, clearcoatRoughness: .4 });
+  const breu = new THREE.MeshStandardMaterial({ color: 0x0E0E11, roughness: .55 });
+  const sombra = m => { m.castShadow = true; m.receiveShadow = true; return m; };
+  const caixa = (w, h, d, r, mat, x, y, z) => { const m = sombra(new THREE.Mesh(new RoundedBoxGeometry(w, h, d, 4, r), mat)); m.position.set(x, y, z); return m; };
+
+  const pc = new THREE.Group(); cena.add(pc);
+  const corpo = new THREE.Group(); pc.add(corpo);
+  corpo.add(caixa(2.3, 2.8, 2.25, .16, plastico, 0, 1.42, 0));
+  corpo.add(caixa(2.18, .05, 2.1, .02, plasticoEsc, 0, .03, 0));
+  corpo.add(caixa(1.96, 1.6, .1, .07, plasticoEsc, 0, 1.86, 1.1));
+  corpo.add(caixa(1.76, 1.38, .1, .06, breu, 0, 1.86, 1.12));
+  corpo.add(caixa(2.0, .02, .02, .008, plasticoEsc, 0, .72, 1.13));
+  corpo.add(caixa(.82, .14, .05, .03, plasticoEsc, .45, .98, 1.12));
+  corpo.add(caixa(.64, .04, .06, .015, breu, .45, .98, 1.135));
+  corpo.add(caixa(.26, .17, .04, .03, plasticoEsc, -.78, .98, 1.12));
+  for (let i = 0; i < 7; i++) for (const lado of [-1, 1]) corpo.add(caixa(.03, .035, 1.25, .012, plasticoEsc, lado*1.15, 2.45 - i*.09, -.25));
+
+  const geoTela = new THREE.PlaneGeometry(1.62, 1.22, 40, 30);
+  { const p = geoTela.attributes.position; for (let i = 0; i < p.count; i++) { const x = p.getX(i)/.81, y = p.getY(i)/.61; p.setZ(i, .055*(1 - x*x*.6)*(1 - y*y*.6)); } geoTela.computeVertexNormals(); }
+  const uni = { tex: { value: null }, uvt: { value: new THREE.Vector4(1, 1, 0, 0) }, power: { value: 0 }, tempo: { value: 0 } };
+  const matTela = new THREE.ShaderMaterial({ uniforms: uni, toneMapped: false,
+    vertexShader: 'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+    fragmentShader: `uniform sampler2D tex;uniform vec4 uvt;uniform float power;uniform float tempo;varying vec2 vUv;
+      void main(){
+        vec2 c=vUv-.5; c*=1.+.07*dot(c,c); vec2 uv=c+.5;
+        float sy=mix(.006,1.,smoothstep(.12,1.,power)), sx=mix(.0,1.,smoothstep(0.,.18,power));
+        vec2 q=(uv-.5)/vec2(max(sx,.001),sy)+.5;
+        vec3 col=vec3(0.);
+        if(q.x>0.&&q.x<1.&&q.y>0.&&q.y<1.){
+          vec2 t=q*uvt.xy+uvt.zw;
+          col=vec3(texture2D(tex,t+vec2(.0012,0.)).r,texture2D(tex,t).g,texture2D(tex,t-vec2(.0012,0.)).b);
+          col*=1.+(1.-power)*4.;
+        }
+        col*=.92+.08*sin(vUv.y*720.+tempo*3.);
+        col*=1.-.55*pow(length(c)*1.35,3.);
+        col+=vec3(.9,.95,1.)*.05*smoothstep(.55,0.,length(vUv-vec2(.22,.82)));
+        col+=vec3(.02,.025,.02)*power;
+        col*=.97+.03*sin(tempo*60.);
+        gl_FragColor=vec4(col,1.);
+        #include <colorspace_fragment>
+      }` });
+  const telaMesh = new THREE.Mesh(geoTela, matTela); telaMesh.position.set(0, 1.86, 1.17); corpo.add(telaMesh);
+  const brilho = new THREE.PointLight(0xdfe8ff, 0, 4, 2); brilho.position.set(0, 1.6, 1.9); corpo.add(brilho);
+
+  const teclado = new THREE.Group(); teclado.position.set(0, 0, 2.25); teclado.rotation.x = .05; pc.add(teclado);
+  teclado.add(caixa(2.15, .13, .82, .05, plastico, 0, .065, 0));
+  const geoTecla = new RoundedBoxGeometry(.118, .07, .118, 2, .025);
+  const teclas = new THREE.InstancedMesh(geoTecla, tecla, 13*4); teclas.castShadow = true; teclas.receiveShadow = true;
+  const m4 = new THREE.Matrix4(); let k = 0;
+  for (let l = 0; l < 4; l++) for (let c = 0; c < 13; c++) { m4.makeTranslation(-.88 + c*.147 + (l%2)*.04, .15, -.27 + l*.15); teclas.setMatrixAt(k++, m4); }
+  teclado.add(teclas);
+  teclado.add(caixa(.95, .07, .118, .025, tecla, 0, .15, .33));
+
+  const chao = new THREE.Mesh(new THREE.PlaneGeometry(30, 30), new THREE.ShadowMaterial({ opacity: .42 }));
+  chao.rotation.x = -Math.PI/2; chao.receiveShadow = true; cena.add(chao);
+  cena.add(new THREE.HemisphereLight(0xfff6ea, 0x101014, .5));
+  const sol = new THREE.DirectionalLight(0xfff3e4, 2.4); sol.position.set(3.5, 7, 5); sol.castShadow = true;
+  sol.shadow.mapSize.set(1024, 1024); sol.shadow.radius = 14; sol.shadow.blurSamples = 16; sol.shadow.bias = -.0008;
+  Object.assign(sol.shadow.camera, { left: -4, right: 4, top: 4, bottom: -4, near: 1, far: 20 }); cena.add(sol);
+  const contra = new THREE.DirectionalLight(0xd8dcff, 1.1); contra.position.set(-5, 4, -4); cena.add(contra);
+
+  const carregador = new THREE.TextureLoader(), cache = new Map();
+  function texturaDe(p){
+    if (cache.has(p.nome)) return Promise.resolve(cache.get(p.nome));
+    return new Promise(ok => {
+      const pronto = t => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; const a = t.image.width/t.image.height, alvo = 4/3;
+        const sx = a > alvo ? alvo/a : 1, sy = a > alvo ? 1 : a/alvo; t.userData.uvt = new THREE.Vector4(sx, sy, (1 - sx)/2, 1 - sy); cache.set(p.nome, t); ok(t); };
+      const terminal = () => {
+        const cv = document.createElement('canvas'); cv.width = 1024; cv.height = 768; const g = cv.getContext('2d');
+        g.fillStyle = '#0B0B0D'; g.fillRect(0, 0, 1024, 768); g.fillStyle = '#ECE7DF'; g.font = '600 64px ui-monospace, Menlo, Consolas, monospace';
+        g.fillText(`> ${p.nome}`.slice(0, 26), 70, 150); g.fillStyle = '#A39E97'; g.font = '34px ui-monospace, Menlo, Consolas, monospace';
+        const palavras = p.txt.split(' '); let linha = '', y = 240;
+        for (const w of palavras) { if ((linha + w).length > 42) { g.fillText(linha, 70, y); y += 50; linha = ''; } linha += w + ' '; }
+        g.fillText(linha, 70, y); g.fillStyle = '#ECE7DF'; g.fillRect(70, y + 40, 30, 50);
+        pronto(new THREE.CanvasTexture(cv));
+      };
+      if (p.img) carregador.load(p.img, pronto, undefined, terminal); else terminal();
+    });
+  }
+
+  let anim = null, pedido = 0;
+  async function mostra(dir){
+    const p = window.VAULT.lista[window.VAULT.i], meu = ++pedido;
+    const t = await texturaDe(p);
+    if (meu !== pedido) return;
+    const poe = () => { uni.tex.value = t; uni.uvt.value.copy(t.userData.uvt); };
+    if (!uni.tex.value || calmo || !dir) { poe(); anim = { de: uni.power.value, para: 1, t0: performance.now(), dur: calmo ? 1 : 700 }; return; }
+    anim = { de: uni.power.value, para: 0, t0: performance.now(), dur: 260, depois: () => { poe(); anim = { de: 0, para: 1, t0: performance.now(), dur: 650 }; } };
+    if (!calmo) giro += dir*.5;
+  }
+  addEventListener('vault:troca', e => mostra(e.detail.dir));
+  addEventListener('vault:lista', () => window.VAULT.lista.forEach(texturaDe));
+  window.VAULT.lista.forEach(texturaDe);
+
+  let W = 0, H = 0, mx = 0, my = 0, rx = 0, ry = -.42, giro = 0, visivel = true;
+  function medir(){
+    W = mesa.clientWidth; H = mesa.clientHeight; renderer.setSize(W, H, false);
+    const asp = W/H; cam.aspect = asp;
+    const dist = asp < 1.1 ? 11.5/asp*1.05 : 9.1;
+    cam.position.set(0, 3.0, Math.max(9.1, dist)); cam.lookAt(0, 1.05, .9); cam.updateProjectionMatrix();
+  }
+  new ResizeObserver(medir).observe(mesa); medir();
+  new IntersectionObserver(e => { visivel = e[0].isIntersecting; }).observe(mesa);
+  mesa.addEventListener('pointermove', e => { const r = mesa.getBoundingClientRect(); mx = (e.clientX - r.left)/r.width - .5; my = (e.clientY - r.top)/r.height - .5; });
+  mesa.addEventListener('pointerleave', () => { mx = 0; my = 0; });
+  mostra(0);
+  let antes = performance.now();
+  function quadro(agora){
+    requestAnimationFrame(quadro);
+    if (!visivel || document.hidden) { antes = agora; return; }
+    const dt = Math.max(0, Math.min(agora - antes, 50))/16.7; antes = agora;
+    if (anim) {
+      const t = Math.min(1, (agora - anim.t0)/anim.dur), e = anim.para > anim.de ? 1 - Math.pow(1 - t, 3) : t*t;
+      uni.power.value = anim.de + (anim.para - anim.de)*e;
+      if (t >= 1) { const d = anim.depois; anim = null; if (d) d(); }
+    }
+    giro *= Math.pow(.9, dt);
+    const ociosa = calmo ? 0 : Math.sin(agora*.0004)*.08;
+    const alvoY = -.42 + mx*.5 + ociosa + giro, alvoX = my*.12;
+    if (calmo) { ry = alvoY; rx = alvoX; }
+    else { const q = 1 - Math.pow(.93, dt); ry += (alvoY - ry)*q; rx += (alvoX - rx)*q; }
+    pc.rotation.set(rx, ry, 0);
+    uni.tempo.value = calmo ? 0 : agora/1000;
+    brilho.intensity = 1.6*uni.power.value;
+    renderer.render(cena, cam);
+  }
+  requestAnimationFrame(quadro);
+}
+const io = new IntersectionObserver(e => { if (e[0].isIntersecting) { io.disconnect(); liga(); } }, { rootMargin: '400px 0px' });
+io.observe(mesa);
 </script>
 </body>
 </html>
