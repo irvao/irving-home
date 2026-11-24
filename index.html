@@ -779,13 +779,14 @@ rota();
 const FIXOS = [
   { nome: 'Jogo', txt: 'Um incrível jogo sobre o Irving em busca de um misto-quente.', url: 'https://irvao.com.br/jogo/', img: 'vault/jogo.webp' },
   { nome: 'Inventário', txt: 'Onde está cada coisa guardada nas caixas de casa.', url: 'https://irvao.com.br/inventario/', img: 'vault/inventario.webp' },
+  { nome: 'Espessura', txt: 'Compara em 3D a espessura das lentes de óculos em cada índice.', url: 'https://irving.com.br/espessura/', img: 'vault/espessura.webp' },
   { nome: 'Laboratório', txt: 'Terminal das antigas com ferramentas, atalhos e comandos inúteis.', url: 'https://irvao.com.br/', img: 'vault/lab.webp' },
   { nome: 'Excalidraw', txt: 'Quadro para rabiscar ideias com cara de desenho à mão.', url: 'https://excalidraw.com/', img: 'vault/excalidraw.webp' },
   { nome: 'CyberChef', txt: 'Codifica, decodifica e converte praticamente qualquer coisa.', url: 'https://gchq.github.io/CyberChef/', img: 'vault/cyberchef.webp' },
   { nome: 'PairDrop', txt: 'Passa arquivo entre celular e computador direto pelo navegador.', url: 'https://pairdrop.net/', img: 'vault/pairdrop.webp' },
   { nome: 'draw.io', txt: 'Diagramas e fluxogramas sem instalar nada.', url: 'https://app.diagrams.net/', img: 'vault/drawio.webp' }
 ];
-const ESCONDE = ['irvao.github.io','irving-home','pedido-armacoes','manutencao','churrascometro','jogo','inventario'];
+const ESCONDE = ['irvao.github.io','irving-home','pedido-armacoes','manutencao','churrascometro','jogo','inventario','espessura-lente-3d'];
 const esc = s => String(s).replace(/[&<>"']/g, ch => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[ch]));
 const dois = n => String(n).padStart(2, '0');
 window.VAULT = { lista: [], i: 0 };
